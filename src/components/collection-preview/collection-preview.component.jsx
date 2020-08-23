@@ -1,6 +1,6 @@
 import React from "react";
 import "./collection-preview.styles.scss";
-import CollectionItem from "../collection-item/collectin-item.component";
+import CollectionItem from "../collection-item/collection-item.component";
 
 const CollectionPreview = ({ title, items }) => {
   return (
@@ -10,8 +10,8 @@ const CollectionPreview = ({ title, items }) => {
         {items
           // 4つだけ表示する
           .filter((item, i) => i < 4)
-          .map(({ id, ...other }) => (
-            <CollectionItem key={id} {...other} />
+          .map((item) => (
+            <CollectionItem key={item.id} item={item} />
           ))}
       </div>
     </div>
