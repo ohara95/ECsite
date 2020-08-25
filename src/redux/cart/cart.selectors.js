@@ -1,6 +1,7 @@
 // メモ化
 import { createSelector } from "reselect";
 
+// rootReducerの
 const selectCart = (state) => {
   return state.cart;
 };
