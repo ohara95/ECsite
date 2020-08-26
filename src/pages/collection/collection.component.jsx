@@ -5,11 +5,17 @@ import { selectCollection } from "../../redux/shop/shop.selectors";
 
 import "./collection.styles.scss";
 
+// state > shop > collections
 const CollectionPage = ({ collection }) => {
-  console.log(collection);
+  const { title, items } = collection;
   return (
     <div className="collection-page">
-      <h2>COLLECTION PAGE</h2>
+      <h2 className="title">{title}</h2>
+      <div className="items">
+        {items.map((item) => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -17,7 +23,6 @@ const CollectionPage = ({ collection }) => {
 // 第二引数:ラップしているコンポーネントのprops
 // このコンポーネントで取得している全てのpropsが得られる
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   return {
     // URLパラメーターに応じてstateの一部を必要とする為
     // selectコレクションを呼び出した後にstateを渡す
