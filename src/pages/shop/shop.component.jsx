@@ -1,26 +1,14 @@
 import React from "react";
-import SHOT_DATA from "./shop.data";
-import CollectionPreview from "../../components/collection-preview/collection-preview.component";
+import { Route } from "react-router-dom";
+import CollectionsOverview from "../../components/collections-overview/collections-overview";
+import CollectionPage from "../collection/collection.component";
 
-class ShopPage extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      collections: SHOT_DATA,
-    };
-  }
-
-  render() {
-    const { collections } = this.state;
-    return (
-      <div>
-        {collections.map(({ id, ...other }) => (
-          <CollectionPreview key={id} {...other} />
-        ))}
-      </div>
-    );
-  }
-}
+// プロパティ名が入る
+const ShopPage = ({ match }) => (
+  <div className="shop-page">
+    <Route exact path={`${match.path}`} component={CollectionsOverview} />
+    <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+  </div>
+);
 
 export default ShopPage;
